@@ -1,6 +1,8 @@
 import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:practise_english_app/blocs/theme.dart';
+import 'package:provider/provider.dart';
 
 class SetUp extends StatelessWidget {
   @override
@@ -46,7 +48,7 @@ class SetUp extends StatelessWidget {
                       'Chế độ ban đêm',
                       style: TextStyle(fontSize: 15),
                     ),
-                    HomeScreen(),
+                    HomePage(),
                   ],
                 ),
               ),
@@ -96,4 +98,21 @@ class _ChangLanguageState extends State<ChangLanguage> {
   }
 }
 
-
+class HomePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
+    return Container(
+          child: Column(
+            children: [
+              FlatButton(
+                  onPressed: () => _themeChanger.setThemeData(ThemeData.dark()),
+                  child: Text('Dark')),
+              FlatButton(
+                  onPressed: () => _themeChanger.setThemeData(ThemeData.light()),
+                  child: Text('Light'))
+            ],
+          ),
+        );
+  }
+}

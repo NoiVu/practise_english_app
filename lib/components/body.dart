@@ -161,7 +161,7 @@ class getBody extends StatelessWidget {
                             ),
                           );
                         },
-                        child: Icon(Icons.settings),
+                        child: Icon(Icons.settings,color: Colors.amber,),
                       ),
                     ],
                   ),
@@ -170,7 +170,7 @@ class getBody extends StatelessWidget {
             ),
           ),
           flex: 1,
-        )
+        ),
       ],
     );
   }
