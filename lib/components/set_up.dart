@@ -1,19 +1,17 @@
-import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:practise_english_app/blocs/theme.dart';
+import 'package:practise_english_app/components/reach_us.dart';
 import 'package:provider/provider.dart';
-
-bool isDarkModeEnabled = false;
 
 class SetUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         centerTitle: true,
         title: Text('Cài đặt'),
+        // backgroundColor: _is,
       ),
       body: Column(
         children: [
@@ -144,9 +142,14 @@ class Feedbacks extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
       return ListTile(
-        onTap: (){},
+        onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute<void>(builder: (context) => ReachUs())
+          );
+        },
         leading: Icon(Icons.feedback,color: Colors.amberAccent,),
-        title: Text('Đánh giá'),
+        title: Text('gửi phản hồi'),
       );
   }
 }

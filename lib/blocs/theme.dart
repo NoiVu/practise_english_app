@@ -13,6 +13,5 @@ class ThemeChanger with ChangeNotifier {
     }
     _themeData = theme;
     notifyListeners();
-    // theme.pr
   }
 }
