@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:practise_english_app/blocs/theme.dart';
 import 'package:practise_english_app/components/reach_us.dart';
+import 'package:practise_english_app/components/share_social.dart';
 import 'package:provider/provider.dart';
 
 class SetUp extends StatelessWidget {
@@ -19,7 +21,10 @@ class SetUp extends StatelessWidget {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 36),
-                child: Icon(Icons.language,color: Colors.amberAccent,),
+                child: Icon(
+                  Icons.language,
+                  color: Colors.amberAccent,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 32, top: 10),
@@ -53,7 +58,7 @@ class SetUp extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20, top: 10),
-            child: Share(),
+            child: ShareSocials(),
           ),
         ],
       ),
@@ -107,19 +112,26 @@ class HomePage extends StatelessWidget {
             ? _themeChanger.setThemeData(ThemeData.light())
             : _themeChanger.setThemeData(ThemeData.dark());
       },
-      leading: Icon(Icons.nightlight_round,color: Colors.amberAccent,),
+      leading: Icon(
+        Icons.nightlight_round,
+        color: Colors.amberAccent,
+      ),
       title: Text('Chế độ đêm'),
       subtitle: _themeChanger.isDarkModeEnabled ? Text('Bật') : Text('Tắt'),
     );
   }
 }
+
 // set up music in system
-class Music extends StatelessWidget{
+class Music extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: (){},
-      leading: Icon(Icons.music_note,color: Colors.amberAccent,),
+      onTap: () {},
+      leading: Icon(
+        Icons.music_note,
+        color: Colors.amberAccent,
+      ),
       title: Text('Âm thanh'),
       subtitle: Text('Bật'),
     );
@@ -127,41 +139,52 @@ class Music extends StatelessWidget{
 }
 // handler vote app
 
-class Vote extends StatelessWidget{
+class Vote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: (){},
-      leading: Icon(Icons.how_to_vote,color: Colors.amberAccent,),
+      onTap: () {},
+      leading: Icon(
+        Icons.how_to_vote,
+        color: Colors.amberAccent,
+      ),
       title: Text('Đánh giá'),
     );
   }
 }
+
 // send feedback to author
-class Feedbacks extends StatelessWidget{
+class Feedbacks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-      return ListTile(
-        onTap: (){
-          Navigator.push(
-              context,
-              MaterialPageRoute<void>(builder: (context) => ReachUs())
-          );
-        },
-        leading: Icon(Icons.feedback,color: Colors.amberAccent,),
-        title: Text('gửi phản hồi'),
-      );
+    return ListTile(
+      onTap: () {
+        Navigator.push(
+            context, MaterialPageRoute<void>(builder: (context) => ReachUs()));
+      },
+      leading: Icon(
+        Icons.feedback,
+        color: Colors.amberAccent,
+      ),
+      title: Text('gửi phản hồi'),
+    );
   }
 }
 
-class Share extends StatelessWidget{
+// ignore: must_be_immutable
+class ShareSocials extends StatelessWidget {
+  String msg = 'https://apps.apple.com/app/id1542431728?fbclid=IwAR0IFxlj5gkEw_6N0fxlq8uErhLhSXuqw4KgblWaCpQTImrw_LYfOXfTnnU';
   @override
   Widget build(BuildContext context) {
-   return ListTile(
-     onTap: (){},
-     leading: Icon(Icons.share,color: Colors.amberAccent,),
-     title: Text('Chia sẻ'),
-   );
+    return ListTile(
+      onTap: () {
+        FlutterShareMe().shareToSystem(msg: msg);
+      },
+      leading: Icon(
+        Icons.share,
+        color: Colors.amberAccent,
+      ),
+      title: Text('Chia sẻ'),
+    );
   }
-
 }
