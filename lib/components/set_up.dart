@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:practise_english_app/blocs/theme.dart';
 import 'package:practise_english_app/components/reach_us.dart';
-import 'package:practise_english_app/components/share_social.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SetUp extends StatelessWidget {
   @override
@@ -143,7 +143,16 @@ class Vote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () async {
+        final url = "https://play.google.com/store/apps/details?id=grammar."
+            "englishgrammarpractice&hl=vi&gl=US";
+        if (await canLaunch(url)) {
+          await launch(
+            url,
+            forceSafariVC: false,
+          );
+        }
+      },
       leading: Icon(
         Icons.how_to_vote,
         color: Colors.amberAccent,
@@ -173,7 +182,8 @@ class Feedbacks extends StatelessWidget {
 
 // ignore: must_be_immutable
 class ShareSocials extends StatelessWidget {
-  String msg = 'https://apps.apple.com/app/id1542431728?fbclid=IwAR0IFxlj5gkEw_6N0fxlq8uErhLhSXuqw4KgblWaCpQTImrw_LYfOXfTnnU';
+  String msg = "https://play.google.com/store/apps/details?id=grammar."
+      "englishgrammarpractice&hl=vi&gl=US";
   @override
   Widget build(BuildContext context) {
     return ListTile(
