@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:practise_english_app/blocs/theme.dart';
 import 'package:provider/provider.dart';
 
+bool isDarkModeEnabled = false;
+
 class SetUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,11 +19,11 @@ class SetUp extends StatelessWidget {
           Row(
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 16),
+                padding: const EdgeInsets.only(left: 36),
                 child: Icon(Icons.language),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20, top: 10),
+                padding: const EdgeInsets.only(left: 32, top: 10),
                 child: Column(
                   children: [
                     Text(
@@ -34,25 +36,9 @@ class SetUp extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 16),
-                child: Icon(Icons.nightlight_round),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, top: 10),
-                child: Column(
-                  children: [
-                    Text(
-                      'Chế độ ban đêm',
-                      style: TextStyle(fontSize: 15),
-                    ),
-                    HomePage(),
-                  ],
-                ),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(left: 20, top: 10),
+            child: HomePage(),
           ),
         ],
       ),
@@ -75,10 +61,6 @@ class _ChangLanguageState extends State<ChangLanguage> {
       icon: const Icon(Icons.arrow_drop_down),
       iconSize: 20,
       elevation: 15,
-      // underline: Container(
-      //   height: 2,
-      //   color: Colors.grey.shade300,
-      // ),
       onChanged: (String newValue) {
         setState(() {
           dropDownValue = newValue;
@@ -102,17 +84,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
-    return Container(
-          child: Column(
-            children: [
-              FlatButton(
-                  onPressed: () => _themeChanger.setThemeData(ThemeData.dark()),
-                  child: Text('Dark')),
-              FlatButton(
-                  onPressed: () => _themeChanger.setThemeData(ThemeData.light()),
-                  child: Text('Light'))
-            ],
-          ),
-        );
+    return ListTile(
+      onTap: () {
+        _themeChanger.isDarkModeEnabled
+            ? _themeChanger.setThemeData(ThemeData.light())
+            : _themeChanger.setThemeData(ThemeData.dark());
+      },
+      leading: Icon(Icons.nightlight_round,),
+      title: Text('Chế độ đêm'),
+      subtitle: _themeChanger.isDarkModeEnabled ? Text('Bật') : Text('Tắt'),
+    );
   }
 }
