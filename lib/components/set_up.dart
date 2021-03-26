@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:practise_english_app/blocs/theme.dart';
-import 'package:practise_english_app/chose_platform.dart';
+import 'package:practise_english_app/choose_platform.dart';
 import 'package:practise_english_app/components/reach_us.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+final String _choosePlatFrom = choosePlatForm();
 
 class SetUp extends StatelessWidget {
   @override
@@ -145,9 +147,9 @@ class Vote extends StatelessWidget {
     return ListTile(
       onTap: () async {
         // final String links = Platform.isAndroid ? urlCHPlay : urlAppStore;
-        if (await canLaunch(chosePlatForm())) {
+        if (await canLaunch(_choosePlatFrom)) {
           await launch(
-            chosePlatForm(),
+            _choosePlatFrom,
             forceSafariVC: false,
           );
         }
@@ -181,12 +183,11 @@ class Feedbacks extends StatelessWidget {
 
 // ignore: must_be_immutable
 class ShareSocials extends StatelessWidget {
-  // static final ChosePlatForm _chosePlatForm = ChosePlatForm();
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        FlutterShareMe().shareToSystem(msg: chosePlatForm());
+        FlutterShareMe().shareToSystem(msg: _choosePlatFrom);
       },
       leading: Icon(
         Icons.share,
