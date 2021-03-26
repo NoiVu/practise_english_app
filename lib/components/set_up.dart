@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_share_me/flutter_share_me.dart';
 import 'package:practise_english_app/blocs/theme.dart';
+import 'package:practise_english_app/chose_platform.dart';
 import 'package:practise_english_app/components/reach_us.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,7 +14,6 @@ class SetUp extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Cài đặt'),
-        // backgroundColor: _is,
       ),
       body: Column(
         children: [
@@ -137,18 +137,17 @@ class Music extends StatelessWidget {
     );
   }
 }
-// handler vote app
 
+// handler vote app
 class Vote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () async {
-        final url = "https://play.google.com/store/apps/details?id=grammar."
-            "englishgrammarpractice&hl=vi&gl=US";
-        if (await canLaunch(url)) {
+        // final String links = Platform.isAndroid ? urlCHPlay : urlAppStore;
+        if (await canLaunch(chosePlatForm())) {
           await launch(
-            url,
+            chosePlatForm(),
             forceSafariVC: false,
           );
         }
@@ -182,13 +181,12 @@ class Feedbacks extends StatelessWidget {
 
 // ignore: must_be_immutable
 class ShareSocials extends StatelessWidget {
-  String msg = "https://play.google.com/store/apps/details?id=grammar."
-      "englishgrammarpractice&hl=vi&gl=US";
+  // static final ChosePlatForm _chosePlatForm = ChosePlatForm();
   @override
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        FlutterShareMe().shareToSystem(msg: msg);
+        FlutterShareMe().shareToSystem(msg: chosePlatForm());
       },
       leading: Icon(
         Icons.share,
