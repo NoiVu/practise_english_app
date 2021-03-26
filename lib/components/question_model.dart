@@ -23,7 +23,7 @@ class QuestionModel {
       this.level,
       this.explanation});
 
-  factory QuestionModel.fromJson(json){
+  factory QuestionModel.fromJson(json) {
     return QuestionModel(
         topicId: json['topicId'],
         id: json['id'],
@@ -32,10 +32,8 @@ class QuestionModel {
         answers: json['answers'],
         correctAnswer: json['correctAnswer'],
         level: json['level'],
-        explanation: json['explanation']
-    );
+        explanation: json['explanation']);
   }
-
 }
 
 class QuestionModelList {
@@ -43,28 +41,26 @@ class QuestionModelList {
 
   QuestionModelList({this.list});
 
-
-  factory QuestionModelList.fromJson(List array){
+  factory QuestionModelList.fromJson(List array) {
     List value = [];
-    try{
+    try {
       array.forEach((element) {
-        final model =  QuestionModel.fromJson(element);
+        final model = QuestionModel.fromJson(element);
         value.add(model);
       });
-    }catch(e, stack){
+    } catch (e, stack) {
       debugPrint('$e, $stack');
     }
     return QuestionModelList(list: value);
   }
 
-  Future fromJson(String assetsPath) async{
-   final jsonStr = await rootBundle.loadString(assetsPath);
-   List jsons = jsonDecode(jsonStr);
-   return QuestionModelList.fromJson(jsons).list;
+  Future fromJson(String assetsPath) async {
+    final jsonStr = await rootBundle.loadString(assetsPath);
+    List jsons = jsonDecode(jsonStr);
+    return QuestionModelList.fromJson(jsons).list;
   }
 
-  void load(){
+  void load() {
     fromJson('assets/jsons/adb.json');
   }
-
 }
