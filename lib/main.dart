@@ -24,12 +24,11 @@ class MaterialAppTheme extends StatelessWidget {
     final theme = Provider.of<ThemeChanger>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: theme.getThemeData() ,
       home: Scaffold(
         extendBodyBehindAppBar: true,
         body: getBody(),
       ),
-      theme: theme.getThemeData(),
-
     );
   }
 }
