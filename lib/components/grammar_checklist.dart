@@ -26,41 +26,43 @@ class GrammarChecklist extends StatelessWidget {
                       progressColor: Colors.grey.shade200,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 5,bottom: 5),
-                    child: RichText(
-                      text: TextSpan(
-                        //   style: DefaultTextStyle.of(context).style,
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'Điểm trung bình: ',
-                              style: TextStyle(fontSize: 15)),
-                          TextSpan(
-                            text: '0',
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 9.0),
+                    child: Column(
+                      children: [
+                        RichText(
+                          text: TextSpan(
+
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Điểm trung bình: ',
+                                  style: TextStyle(fontSize: 15,color: Colors.black)),
+                              TextSpan(
+                                text: '0',
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold,color: Colors.black),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 5),
-                    child: RichText(
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                              text: 'Xếp hạng: ',
-                              style: TextStyle(fontSize: 15)),
-                          TextSpan(
-                            text: 'F',
-                            style: TextStyle(
-                                fontSize: 15, fontWeight: FontWeight.bold),
+                        ),
+                        RichText(
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: 'Xếp hạng: ',
+                                  style: TextStyle(fontSize: 15,color: Colors.black)),
+                              TextSpan(
+                                text: 'F',
+                                style: TextStyle(
+                                    fontSize: 15, fontWeight: FontWeight.bold,color: Colors.black),
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                  ),
+                  )
                 ],
               ),
             ),
